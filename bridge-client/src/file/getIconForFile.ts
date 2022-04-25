@@ -11,11 +11,7 @@ import sqlFile from "./icons/fileTypes/file-sql.png";
 import jsonFile from "./icons/fileTypes/file-json.png";
 import archiveFile from "./icons/fileTypes/file-archive.png";
 import emailFile from "./icons/fileTypes/file-email.png";
-
-const isImage = require("is-image");
-const isTextPath = require("is-text-path");
-const isVideo = require("is-video");
-const isAudio = require("is-audio");
+import { isAudio, isImage, isText, isVideo } from "./FileUtils";
 
 export default function getIcon(file: FileInfo) {
   if (file.filePath.endsWith(".pdf")) {
@@ -52,19 +48,16 @@ export default function getIcon(file: FileInfo) {
   if (file.filePath.endsWith(".json")) {
     return jsonFile;
   }
-
+  // check image
   if (isImage(file.filePath)) {
     return imageFile;
   }
-
-  if (isTextPath(file.filePath)) {
+  if (isText(file.filePath)) {
     return textFile;
   }
-
   if (isVideo(file.filePath)) {
     return videoFile;
   }
-
   if (isAudio(file.filePath)) {
     return audioFile;
   }
