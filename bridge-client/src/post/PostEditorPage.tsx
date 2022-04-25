@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import Navigation from "../shared/components/Navigation";
 import { Prompt, useParams } from "react-router-dom";
 import useAPI from "../shared/useAPI";
@@ -15,6 +15,11 @@ import "ace-builds/src-min-noconflict/ext-searchbox";
 import GenericError from "../shared/components/GenericError";
 import { AxiosRequestConfig } from "axios";
 import { RouteParams } from "../shared/types/router";
+
+import '@toast-ui/editor/dist/toastui-editor.css';
+
+import { Editor } from '@toast-ui/react-editor';
+
 
 const frontMatterHelper = require("hexo-front-matter");
 //API Config
@@ -47,6 +52,8 @@ export default function PostEditorPage() {
       id: id,
     },
   });
+  const editorRef = useRef();
+  
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [metadata, setMetadata] = useState({ title: "", categories: [], tags: [], date: new Date().toISOString() });
   const [content, setContent] = useState("");
@@ -61,7 +68,21 @@ export default function PostEditorPage() {
     },
     true
   );
+//   const onChangeEditor = (event:any)=> {
+//     const newEditor: Editor = editorRef?.current;
+//     if(!newEditor) return;
+//     const newContent = newEditor.getInstance().getMarkdown();
 
+//     if (newContent === content) {
+//        // skip when the same
+//        console.info('same...');
+//        return;
+//     }
+
+//     console.info('onChange content', content,event);
+//     setContent(newContent);
+//     setHasUnsavedChanges(true);
+//  };
   //Parse post from api
   useLayoutEffect(() => {
     if (postData.raw) {
@@ -171,7 +192,7 @@ export default function PostEditorPage() {
           </ButtonGroup>
         </ControlGroup>
         <div className="code-editor-preview-container">
-          <AceEditor
+          {/* <AceEditor
             height="90vh"
             width="100vw"
             mode="markdown"
@@ -197,6 +218,13 @@ export default function PostEditorPage() {
             fontSize={userPrefs.editorFontSize || 14}
             showPrintMargin={false}
             editorProps={{ $blockScrolling: true }}
+          /> */}
+           <Editor
+            initialValue={content}
+            previewStyle="vertical"
+            height="90vh"
+            initialEditType="wysiwyg"
+            useCommandShortcut={true}
           />
         </div>
         <Prompt when={hasUnsavedChanges} message="You have unsaved changes, are you sure you want to leave?" />
