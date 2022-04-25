@@ -5,27 +5,27 @@
       "/Users/koideveloper/Documents/5_Working/Projects/CryptoNFT/2_Code/blog/dragonwar-blog"
     ]
   ],
-  "_from": "hexo-bridge@1.0.8",
+  "_from": "git+https://github.com/cowboybkit/hexo-bridge.git",
   "_id": "hexo-bridge@1.0.8",
   "_inBundle": false,
-  "_integrity": "sha512-WuygmUf5eAIoPjmsBhzjVYrVGhPU55cDJ8ju7D4sqh3yGf+1d2eJZguaKYMzs0EH2u1PREOJh/LvyBFy1kDX8Q==",
+  "_integrity": "",
   "_location": "/hexo-bridge",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "hexo-bridge@1.0.8",
+    "type": "git",
+    "raw": "hexo-bridge@git+https://github.com/cowboybkit/hexo-bridge.git",
     "name": "hexo-bridge",
     "escapedName": "hexo-bridge",
-    "rawSpec": "1.0.8",
-    "saveSpec": null,
-    "fetchSpec": "1.0.8"
+    "rawSpec": "git+https://github.com/cowboybkit/hexo-bridge.git",
+    "saveSpec": "git+https://github.com/cowboybkit/hexo-bridge.git",
+    "fetchSpec": "https://github.com/cowboybkit/hexo-bridge.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/hexo-bridge/-/hexo-bridge-1.0.8.tgz",
-  "_spec": "1.0.8",
+  "_resolved": "git+https://github.com/cowboybkit/hexo-bridge.git#95cb45e0cea650409bc11b0e0613e3a9a58bac8e",
+  "_spec": "hexo-bridge@git+https://github.com/cowboybkit/hexo-bridge.git",
   "_where": "/Users/koideveloper/Documents/5_Working/Projects/CryptoNFT/2_Code/blog/dragonwar-blog",
   "author": {
     "name": "Borche Davchev",
@@ -35,6 +35,7 @@
   "bugs": {
     "url": "https://github.com/DeepSpaceHarbor/hexo-bridge/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
@@ -43,6 +44,7 @@
     "js-yaml": "^4.0.0",
     "serve-static": "^1.14.1"
   },
+  "deprecated": false,
   "description": "Admin panel for websites powered by hexo.",
   "homepage": "https://github.com/DeepSpaceHarbor/hexo-bridge#readme",
   "keywords": [
