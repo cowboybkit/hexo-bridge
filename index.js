@@ -35,8 +35,8 @@ hexo.extend.filter.register("server_middleware", (app) => {
   themes.setup(hexo);
 
   //Serve files from the client web app
-  app.use(hexo.config.root + "bridge/static/", serveStatic(path.join(__dirname, "www", "static")));
-  app.use(hexo.config.root + "bridge/", serveClientFiles);
+  app.use(hexo.config.root + "bridge/", serveStatic(path.join(__dirname, "www")), { index: ['index.html', 'index.htm'] });
+  // app.use(hexo.config.root + "bridge/", serveClientFiles);
 
   //API:MISC
   app.use(hexo.config.root + "api/render", function (req, res) {
@@ -327,3 +327,4 @@ hexo.extend.filter.register("server_middleware", (app) => {
     }
   });
 });
+
