@@ -33,10 +33,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build && rm -rf ../../../node_modules/hexo-bridge/www && mv build ../../../node_modules/hexo-bridge/www",
+    "deploy": "npm run build && rsync -rlpt build/ ../bridge-admin-api/www && rsync -rlpt ../bridge-admin-api/ ../../../node_modules/hexo-bridge",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "rsync_main": "rsync -rlpt ../../../node_modules/hexo-bridge/ ../../../../hexo-bridge-main"
+    "rsync_main": "rsync -rlpt ../bridge-admin-api/ ../../../../hexo-bridge-main"
   },
   "eslintConfig": {
     "extends": [
