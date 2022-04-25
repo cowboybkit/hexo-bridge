@@ -14,6 +14,7 @@ import "ace-builds/src-noconflict/mode-markdown";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import { AxiosRequestConfig } from "axios";
 import { RouteParams } from "../shared/types/router";
+import { Editor } from "@toast-ui/react-editor";
 
 const frontMatterHelper = require("hexo-front-matter");
 
@@ -43,7 +44,7 @@ export default function PageEditorPage() {
       id: id,
     },
   });
-
+  const editorRef = React.createRef<Editor>();
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [metadata, setMetadata] = useState({ title: "", categories: [], tags: [], date: new Date().toISOString() });
   const [content, setContent] = useState("");
@@ -86,7 +87,20 @@ export default function PageEditorPage() {
       });
     }
   }
+  function onChangeEditor() {
+      const newEditor = editorRef.current as Editor;
+      if(!newEditor) return;
+      const newContent = newEditor.getInstance().getMarkdown();
+      if (newContent === content) {
+        // skip when the same
+        console.info('same...');
+        return;
+      }
 
+      // console.info('onChange content', content,event);
+      setContent(newContent);
+      setHasUnsavedChanges(true);
+  };
   function getState() {
     if (isLoading) {
       return <Spinner />;
@@ -131,7 +145,7 @@ export default function PageEditorPage() {
           </ButtonGroup>
         </ControlGroup>
         <div className="code-editor-preview-container">
-          <AceEditor
+          {/* <AceEditor
             height="90vh"
             width="100vw"
             mode="markdown"
@@ -145,6 +159,16 @@ export default function PageEditorPage() {
             fontSize={userPrefs.editorFontSize || 14}
             showPrintMargin={false}
             editorProps={{ $blockScrolling: true }}
+          /> */}
+          <Editor
+            onKeyup={onChangeEditor}
+            onCaretChange={onChangeEditor}
+            initialValue={content}
+            previewStyle="vertical"
+            height="90vh"
+            initialEditType="wysiwyg"
+            useCommandShortcut={true}
+            ref={editorRef}
           />
         </div>
         <Prompt when={hasUnsavedChanges} message="You have unsaved changes, are you sure you want to leave?" />
