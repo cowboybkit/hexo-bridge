@@ -36,6 +36,7 @@
     "deploy": "npm run build && rsync -rlpt build/ ../bridge-admin-api/www && rsync -rlpt ../bridge-admin-api/ ../../../node_modules/hexo-bridge",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "update_server": "rsync -rlpt ../bridge-admin-api/ ../../../node_modules/hexo-bridge",
     "rsync_main": "rsync -rlpt ../bridge-admin-api/ ../../../../hexo-bridge-main"
   },
   "eslintConfig": {
