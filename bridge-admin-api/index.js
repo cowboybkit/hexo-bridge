@@ -23,6 +23,23 @@ function setupHelpers(req, res, next) {
   next();
 }
 
+var passwordProtected = hexo.config.admin && hexo.config.admin.username;
+
+// verify that correct config options are set.
+if (passwordProtected) {
+  if (!hexo.config.admin.password_hash) {
+    console.error('[Hexo Admin]: config admin.password_hash is requred for authentication');
+    passwordProtected = false;
+  } else if (hexo.config.admin.password_hash.length <= 32) {
+    throw new Error('[Hexo Admin]: the provided password_hash looks like an md5 hash -- hexo-admin has switched to use bcrypt; see the Readme for more info.')
+  }
+
+  if (!hexo.config.admin.secret) {
+    console.error('[Hexo Admin]: config admin.secret is requred for authentication');
+    passwordProtected = false;
+  }
+
+}
 hexo.extend.filter.register("server_middleware", (app) => {
   app.use(hexo.config.root + "api/", bodyParser.urlencoded({ limit: "500mb", extended: true }));
   app.use(setupHelpers);
@@ -33,10 +50,14 @@ hexo.extend.filter.register("server_middleware", (app) => {
   settings.setup(hexo);
   plugins.setup(hexo);
   themes.setup(hexo);
+  
+  if (passwordProtected) {
+    require('./auth')(app, hexo);   // setup authentication, login page, etc.
+  }
 
   //Serve files from the client web app
-  app.use(hexo.config.root + "bridge/static/", serveStatic(path.join(__dirname, "www/static")));
-  app.use(hexo.config.root + "bridge/", serveClientFiles);
+  app.use(hexo.config.root + "bridge/", serveStatic(path.join(__dirname, "www")), { index: ['index.html', 'index.htm'] });
+  // app.use(hexo.config.root + "bridge/", serveClientFiles);
 
   //API:MISC
   app.use(hexo.config.root + "api/render", function (req, res) {
