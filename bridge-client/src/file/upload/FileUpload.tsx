@@ -30,7 +30,7 @@ export default function FileUpload({ currentLocation, selectedFiles, reportStatu
       try {
         await axios({
           method: "POST",
-          url: "http://localhost:4000/api/assets/upload",
+          url: "/api/assets/upload",
           data: photoFormData,
           headers: {
             "Content-Type": 'multipart/form-data"',
