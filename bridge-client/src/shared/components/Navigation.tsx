@@ -39,7 +39,7 @@ export default function Navigation() {
             <Button minimal icon="duplicate" text="Pages" outlined={location.pathname === "/page/all"} />
           </Link>
 
-          <AnchorButton
+          {/* <AnchorButton
             href="/bridge/file?dir=files"
             minimal
             icon="folder-open"
@@ -55,7 +55,7 @@ export default function Navigation() {
           </Link>
           <Link to="/setting/hexo">
             <Button minimal icon="settings" text="Settings" outlined={location.pathname.startsWith("/setting/")} />
-          </Link>
+          </Link> */}
         </Navbar.Group>
         <Navbar.Group align={Alignment.RIGHT}>
           {getNewPageOrPost()}

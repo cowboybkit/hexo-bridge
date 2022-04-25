@@ -52,7 +52,7 @@ export default function PostEditorPage() {
       id: id,
     },
   });
-  const editorRef = useRef();
+  const editorRef = React.createRef<Editor>();
   
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [metadata, setMetadata] = useState({ title: "", categories: [], tags: [], date: new Date().toISOString() });
@@ -68,21 +68,20 @@ export default function PostEditorPage() {
     },
     true
   );
-//   const onChangeEditor = (event:any)=> {
-//     const newEditor: Editor = editorRef?.current;
-//     if(!newEditor) return;
-//     const newContent = newEditor.getInstance().getMarkdown();
+  function onChangeEditor() {
+    const newEditor = editorRef.current as Editor;
+    if(!newEditor) return;
+    const newContent = newEditor.getInstance().getMarkdown();
+    if (newContent === content) {
+       // skip when the same
+       console.info('same...');
+       return;
+    }
 
-//     if (newContent === content) {
-//        // skip when the same
-//        console.info('same...');
-//        return;
-//     }
-
-//     console.info('onChange content', content,event);
-//     setContent(newContent);
-//     setHasUnsavedChanges(true);
-//  };
+    // console.info('onChange content', content,event);
+    setContent(newContent);
+    setHasUnsavedChanges(true);
+ };
   //Parse post from api
   useLayoutEffect(() => {
     if (postData.raw) {
@@ -220,11 +219,14 @@ export default function PostEditorPage() {
             editorProps={{ $blockScrolling: true }}
           /> */}
            <Editor
+            onKeyup={onChangeEditor}
+            onCaretChange={onChangeEditor}
             initialValue={content}
             previewStyle="vertical"
             height="90vh"
             initialEditType="wysiwyg"
             useCommandShortcut={true}
+            ref={editorRef}
           />
         </div>
         <Prompt when={hasUnsavedChanges} message="You have unsaved changes, are you sure you want to leave?" />
