@@ -221,7 +221,7 @@ export default function PostEditorPage() {
            <Editor
             onKeyup={onChangeEditor}
             onCaretChange={onChangeEditor}
-            initialValue={content}
+            initialValue={content || ""}
             previewStyle="vertical"
             height="90vh"
             initialEditType="wysiwyg"

@@ -21,6 +21,7 @@ export default function FileUpload({ currentLocation, selectedFiles, reportStatu
 
   async function upload() {
     let withErrors = [];
+    console.log(selectedFiles)
     for (let i = 0; i < selectedFiles.length; i++) {
       setUploadProgress((i + 1) / selectedFiles.length);
       setCurrentUploadName(selectedFiles[i].name);

@@ -38,15 +38,15 @@ export default function Navigation() {
           <Link to="/page/all">
             <Button minimal icon="duplicate" text="Pages" outlined={location.pathname === "/page/all"} />
           </Link>
-
-          {/* <AnchorButton
+          <AnchorButton
             href="/bridge/file?dir=files"
             minimal
             icon="folder-open"
             text="Files"
             outlined={location.pathname.startsWith("/file")}
           />
-
+          
+{/* 
           <Link to="/theme/installed">
             <Button minimal icon="control" text="Theme" outlined={location.pathname.startsWith("/theme/")} />
           </Link>

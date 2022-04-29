@@ -24,6 +24,7 @@ function App() {
         <Route exact path={["/post/edit/:id"]} component={PostEditorPage} />
         <Route exact path={["/page/all"]} component={AllPagesPage} />
         <Route exact path={["/page/edit/:id"]} component={PageEditorPage} />
+        <Route exact path={["/file"]} component={FileDirectoryPage} />
         {/* <Route exact path={["/setting/hexo"]} component={HexoSettingsPage} />
         <Route exact path={["/setting/bridge"]} component={BridgeSettingsPage} />
         <Route exact path={["/setting/scaffolds"]} component={ScaffoldsPage} />
@@ -32,8 +33,8 @@ function App() {
         <Route exact path={["/plugin/script"]} component={ScriptsPage} />
         <Route exact path={["/theme/installed"]} component={InstalledThemesPage} />
         <Route exact path={["/theme/discover"]} component={DiscoverThemesPage} />
-        <Route exact path={["/theme/config"]} component={ThemeSettingsPage} />
-        <Route exact path={["/file"]} component={FileDirectoryPage} /> */}
+        <Route exact path={["/theme/config"]} component={ThemeSettingsPage} /> */}
+       
       </Switch>
     </Router>
   );
