@@ -38,7 +38,7 @@ function moveAsset(oldPath, newPath) {
 function upload(req, res) {
   const form = formidable({ multiples: true, uploadDir: ASSETS_DIR_TMP, keepExtensions: true });
   form.on("fileBegin", function (name, file) {
-    let originalFileNamePath = path.join(ASSETS_DIR_TMP, file.name);
+    let originalFileNamePath = path.join(ASSETS_DIR_TMP, file.newFilename);
     if (!fs.existsSync(originalFileNamePath)) {
       file.path = originalFileNamePath;
     }
