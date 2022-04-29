@@ -38,5 +38,8 @@
         "js-yaml": "^4.0.0",
         "path": "^0.12.7",
         "serve-static": "^1.14.1"
+    },
+    "overrides": {
+        "formidable": "^2.0.1"
     }
 }

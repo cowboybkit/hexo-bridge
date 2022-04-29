@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bridge/static/css/main.38806f5e.css",
-    "main.js": "/bridge/static/js/main.8c754b4b.js",
+    "main.js": "/bridge/static/js/main.f821b56e.js",
     "static/media/icons-20.eot": "/bridge/static/media/icons-20.cde033c5d3f24283f757.eot",
     "static/media/icons-20.woff": "/bridge/static/media/icons-20.1ef633d3a28d0986f63e.woff",
     "static/media/icons-20.ttf": "/bridge/static/media/icons-20.57b3e708b232fdcb64f9.ttf",
@@ -9,12 +9,18 @@
     "static/media/icons-16.woff": "/bridge/static/media/icons-16.1645f50fb7f7c109f64e.woff",
     "static/media/icons-16.ttf": "/bridge/static/media/icons-16.13933033991f62d6bb64.ttf",
     "static/media/controll-panel.png": "/bridge/static/media/controll-panel.f5107ba9bf14faeda939.png",
+    "static/media/file-upload-dropzone.svg": "/bridge/static/media/file-upload-dropzone.3e3e175f3e435ea7db907c9adc808b08.svg",
+    "static/media/file-excel.svg": "/bridge/static/media/file-excel.be8324ec178b28b6de206787057fcb5e.svg",
+    "static/media/file-word.svg": "/bridge/static/media/file-word.013d4abc77f25372c92526a94fd035e7.svg",
+    "static/media/file-image.svg": "/bridge/static/media/file-image.f88a601943feeb8dc4fab29829fe9371.svg",
+    "static/media/file-text.svg": "/bridge/static/media/file-text.91b2a18a9e21f715fe161145898324b0.svg",
     "index.html": "/bridge/index.html",
+    "static/media/file-video.svg": "/bridge/static/media/file-video.f0c0398dd96e9dc9dce6fdf541d07186.svg",
     "main.38806f5e.css.map": "/bridge/static/css/main.38806f5e.css.map",
-    "main.8c754b4b.js.map": "/bridge/static/js/main.8c754b4b.js.map"
+    "main.f821b56e.js.map": "/bridge/static/js/main.f821b56e.js.map"
   },
   "entrypoints": [
     "static/css/main.38806f5e.css",
-    "static/js/main.8c754b4b.js"
+    "static/js/main.f821b56e.js"
   ]
 }
