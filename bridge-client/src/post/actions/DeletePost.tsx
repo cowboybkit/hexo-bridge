@@ -24,7 +24,7 @@ export default function DeletePost() {
   async function onDelete() {
     try {
       await deletePost();
-      history.push("/post/all");
+      history.push("/");
       window.location.reload();
     } catch (error) {
       console.error("Unable to delete post.", error);
